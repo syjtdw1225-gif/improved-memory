@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPT Facility Management | 인천항 터미널 시설관리</title>
+    <!-- Tailwind CSS CDN 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 기본 스타일 및 폰트 */
+        body {
+            font-family: 'Inter', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            margin: 0;인천항 터미널의 시설관리를 하는 회사의 홈페이지를 만들거야
+ 첫 화면에는 국제터미널항 메인 화면을 작성해주고 상단의 오른쪽에는 내비게이션 메뉴로 구성 인트로레이지는 인상적인 이미지 배치, 연락처 작성 페이지도 포함해주고 각 선사 및 각 층의 안내등을 만들어주고 HTML코드로 인터렉티브하게 반응형으로 만들어줘
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        .text-blue-900 { color: #004080; } /* IPT 고유의 진한 파란색 */
+        .bg-blue-900 { background-color: #004080; }
+        .bg-amber-400 { background-color: #fbbf24; } /* 강조 색상 */
+
+        /* 인트로 레이지 배경 이미지 (인상적인 이미지 배치) */
+        .intro-layer {
+            height: 80vh; 
+            /* 가상의 인천항 국제터미널 이미지 URL 사용. 실제 이미지로 교체 필요 */
+            background-image: url('https://placehold.co/1920x800/004080/ffffff?text=Incheon+International+Terminal'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* 시각적 효과를 위한 패럴랙스 느낌 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* 탭 버튼 스타일 */
+        .tab-button {
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-button.active {
+            border-color: #004080;
+            font-weight: bold;
+            color: #004080;
+        }
+        
+        /* 스크롤 오프셋을 고려한 CSS (헤더 고정 시 섹션 이동 위치 조정) */
+        section {
+            padding-top: 80px; /* 헤더 높이만큼 여백 확보 */
+            margin-top: -80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 고정 헤더 및 내비게이션 -->
+    <header class="bg-blue-900 text-white shadow-lg fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- 로고 -->
+            <div class="logo">
+                <a href="#home" class="text-xl sm:text-2xl font-bold tracking-wider hover:text-amber-400 transition">
+                    IPT Facility Management
+                </a>
+            </div>
+            
+            <!-- 내비게이션 메뉴 (우측 상단) -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#company" class="hover:text-amber-400 transition p-2 rounded-lg">회사소개</a></li>
+                    <li><a href="#facility" class="hover:text-amber-400 transition p-2 rounded-lg">시설안내</a></li>
+                    <li><a href="#shipping" class="hover:text-amber-400 transition p-2 rounded-lg">선사안내</a></li>
+                    <li><a href="#contact" class="hover:text-amber-400 transition p-2 rounded-lg bg-amber-400 text-blue-900 rounded-full font-semibold">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- 모바일 햄버거 메뉴 버튼 -->
+            <button id="menu-button" class="md:hidden p-2 rounded-md hover:bg-blue-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        
+        <!-- 모바일 메뉴 드롭다운 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-800 text-center">
+            <a href="#company" class="block py-2 px-4 hover:bg-blue-700 transition">회사소개</a>
+            <a href="#facility" class="block py-2 px-4 hover:bg-blue-700 transition">시설안내</a>
+            <a href="#shipping" class="block py-2 px-4 hover:bg-blue-700 transition">선사안내</a>
+            <a href="#contact" class="block py-2 px-4 hover:bg-blue-700 transition bg-amber-400 text-blue-900">Contact Us</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home / 인트로 레이지 (메인 화면) -->
+        <section id="home" class="intro-layer">
+            <div class="p-8 bg-black bg-opacity-40 rounded-xl shadow-2xl backdrop-blur-sm">
+                <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-4 animate-fadeIn">
+                    Dynamic Gateway, 인천항 국제터미널
+                </h1>
+                <p class="text-lg sm:text-2xl text-white font-light mb-8">
+                    최고의 시설 관리 서비스로 안전하고 쾌적한 항만 환경을 조성합니다.
+                </p>
+                <a href="#company" class="px-8 py-3 bg-amber-400 text-blue-900 font-bold text-lg rounded-full shadow-lg hover:bg-amber-300 transition duration-300 transform hover:scale-105">
+                    회사 주요 업무 알아보기
+                </a>
+            </div>
+        </section>
+
+        <!-- 회사 소개 섹션 -->
+        <section id="company" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-12 border-b-4 border-amber-400 inline-block pb-1">회사 소개</h2>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-gray-50 rounded-xl shadow-md border-t-4 border-blue-900">
+                        <svg class="w-12 h-12 text-blue-900 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 8h2m-7 0h2"></path></svg>
+                        <h3 class="text-xl font-semibold mb-2">시설물 유지보수</h3>
+                        <p class="text-gray-600">터미널 건물, 주차장, 편의시설 등 모든 시설물을 최적의 상태로 유지 관리합니다.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-xl shadow-md border-t-4 border-blue-900">
+                        <svg class="w-12 h-12 text-blue-900 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 003 12c0 2.514.805 4.858 2.16 6.75l-1.397 1.396a1 1 0 00.707 1.707h17.92a1 1 0 00.707-1.707l-1.397-1.396c1.355-1.892 2.16-4.236 2.16-6.75a12.001 12.001 0 00-.382-6.016z"></path></svg>
+                        <h3 class="text-xl font-semibold mb-2">안전 및 보안 관리</h3>
+                        <p class="text-gray-600">이용객과 선사의 안전을 최우선으로 하여, 철저한 보안 시스템을 운영합니다.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-xl shadow-md border-t-4 border-blue-900">
+                        <svg class="w-12 h-12 text-blue-900 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                        <h3 class="text-xl font-semibold mb-2">종합 환경 관리</h3>
+                        <p class="text-gray-600">청결한 터미널 환경 조성 및 폐기물 관리를 통해 쾌적함을 제공합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 시설 안내 섹션 (인터랙티브 층별 안내) -->
+        <section id="facility" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-12 border-b-4 border-amber-400 inline-block pb-1">터미널 시설 및 층별 안내</h2>
+                
+                <!-- 탭 메뉴 -->
+                <div class="flex justify-center border-b border-gray-300 mb-8 space-x-4 sm:space-x-8">
+                    <button id="tab-3f" class="tab-button p-3 sm:text-lg focus:outline-none active" onclick="showFloor('3F')">3층 (출국/면세구역)</button>
+                    <button id="tab-2f" class="tab-button p-3 sm:text-lg focus:outline-none" onclick="showFloor('2F')">2층 (선사/업무시설)</button>
+                    <button id="tab-1f" class="tab-button p-3 sm:text-lg focus:outline-none" onclick="showFloor('1F')">1층 (입국/수하물)</button>
+                </div>
+
+                <!-- 층별 상세 내용: 3층 -->
+                <div id="floor-content-3F" class="floor-content bg-white p-6 rounded-lg shadow-xl transition duration-500 ease-in-out">
+                    <h3 class="text-2xl font-semibold text-blue-900 mb-4">3층: 출국장 및 면세구역</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-gray-700 mb-4">국제선 탑승 수속 및 출국 심사가 이루어지는 주요 공간입니다. 면세점, 식당가 등 다양한 편의 시설이 마련되어 있습니다.</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li><strong>선사 카운터:</strong> 각 선사별 체크인 데스크</li>
+                                <li><strong>출국 심사대:</strong> 법무부 출국 심사</li>
+                                <li><strong>면세점 및 상업 시설:</strong> 다양한 쇼핑 공간</li>
+                                <li><strong>레스토랑 &amp; 카페:</strong> 탑승 전 휴식 공간</li>
+                            </ul>
+                        </div>
+                        <div class="rounded-lg overflow-hidden border border-gray-200">
+                             <!-- 3층 안내도 이미지 (가상) -->
+                            <img src="https://placehold.co/400x300/e0f7fa/004080?text=3F+Map" alt="3층 안내도" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 층별 상세 내용: 2층 -->
+                <div id="floor-content-2F" class="floor-content bg-white p-6 rounded-lg shadow-xl transition duration-500 ease-in-out hidden">
+                    <h3 class="text-2xl font-semibold text-blue-900 mb-4">2층: 선사 업무 및 시설 관리 사무소</h3>
+                    <p class="text-gray-700 mb-4">시설 관리 및 해운 관련 업무 시설이 집중된 층입니다. 긴급 상황 시 시설관리팀에 빠르게 연락하실 수 있습니다.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>IPT 시설관리팀 사무실</strong></li>
+                        <li><strong>주요 선사 사무실 및 회의실</strong></li>
+                        <li><strong>금융/환전 서비스</strong></li>
+                        <li><strong>비즈니스 라운지</strong></li>
+                    </ul>
+                </div>
+
+                <!-- 층별 상세 내용: 1층 -->
+                <div id="floor-content-1F" class="floor-content bg-white p-6 rounded-lg shadow-xl transition duration-500 ease-in-out hidden">
+                    <h3 class="text-2xl font-semibold text-blue-900 mb-4">1층: 입국장 및 대중교통</h3>
+                    <p class="text-gray-700 mb-4">입국 심사와 세관, 수하물 수취가 완료되는 곳이며, 터미널 외부로 연결되는 교통의 중심지입니다.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>입국 심사대 &amp; 세관</strong></li>
+                        <li><strong>수하물 수취 및 보관소</strong></li>
+                        <li><strong>대중교통 (버스/택시) 탑승장</strong></li>
+                        <li><strong>편의점 &amp; 간단한 식음료 매장</strong></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 선사 안내 섹션 -->
+        <section id="shipping" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-12 border-b-4 border-amber-400 inline-block pb-1">인천항 주요 선사 안내</h2>
+                
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">인천항 국제여객터미널을 이용하는 주요 선사들의 목록과 위치, 연락처 정보를 제공합니다. 운항 스케줄은 각 선사로 문의 바랍니다.</p>
+
+                <!-- 선사 목록 (가상 데이터) -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="p-6 border rounded-lg shadow hover:shadow-lg transition bg-gray-50">
+                        <h4 class="text-xl font-bold text-blue-900 mb-2">A 해운 (A Shipping)</h4>
+                        <p><strong>운항 노선:</strong> 인천 - 칭다오</p>
+                        <p><strong>3층 카운터:</strong> 3번 게이트</p>
+                        <p><strong>연락처:</strong> 032-XXX-1111</p>
+                    </div>
+                    <div class="p-6 border rounded-lg shadow hover:shadow-lg transition bg-gray-50">
+                        <h4 class="text-xl font-bold text-blue-900 mb-2">B Ferry Line</h4>
+                        <p><strong>운항 노선:</strong> 인천 - 웨이하이</p>
+                        <p><strong>3층 카운터:</strong> 5번 게이트</p>
+                        <p><strong>연락처:</strong> 032-XXX-2222</p>
+                    </div>
+                    <div class="p-6 border rounded-lg shadow hover:shadow-lg transition bg-gray-50">
+                        <h4 class="text-xl font-bold text-blue-900 mb-2">C Cruise & Cargo</h4>
+                        <p><strong>운항 노선:</strong> 인천 - 다롄</p>
+                        <p><strong>3층 카운터:</strong> 8번 게이트</p>
+                        <p><strong>연락처:</strong> 032-XXX-3333</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 연락처 작성 페이지 섹션 (Contact Us) -->
+        <section id="contact" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-12 border-b-4 border-amber-400 inline-block pb-1">Contact Us | 시설 관리 문의</h2>
+                
+                <div class="bg-white p-8 rounded-xl shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-blue-900 mb-4">📞 회사 연락처</h3>
+                            <p class="mb-2"><strong>대표 전화:</strong> 032-XXX-XXXX</p>
+                            <p class="mb-2"><strong>긴급 상황실 (24H):</strong> <span class="text-red-600 font-bold">032-XXX-9119</span></p>
+                            <p class="mb-2"><strong>시설관리 이메일:</strong> info@iptfm.co.kr</p>
+                            <p class="mt-4 text-gray-600">인천광역시 중구 항동7가 국제여객터미널 내</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-blue-900 mb-4">📍 오시는 길</h3>
+                            <div class="h-40 bg-gray-200 flex items-center justify-center rounded-lg text-gray-500 border border-dashed">
+                                [가상의 지도 표시 영역]
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-semibold text-blue-900 mb-4 border-t pt-6">📝 온라인 문의하기</h3>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="성함 / 회사명" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900">
+                        <input type="email" placeholder="연락처 / 이메일 주소" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900">
+                        <input type="text" placeholder="문의 유형 (예: 시설 보수 요청, 입점 문의)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900">
+                        <textarea placeholder="문의 상세 내용" rows="5" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900"></textarea>
+                        <button type="submit" class="w-full py-3 bg-blue-900 text-white font-bold rounded-lg hover:bg-blue-800 transition shadow-lg">
+                            문의 제출하기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-blue-900 text-white text-center p-6">
+        <p class="text-sm">&copy; 2025 IPT Facility Management. All rights reserved.</p>
+        <p class="text-xs mt-1">인천항 국제터미널 시설관리 주식회사</p>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // 1. 모바일 메뉴 토글 기능
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. 층별 안내 탭 기능
+        function showFloor(floorId) {
+            // 모든 콘텐츠 숨기기
+            document.querySelectorAll('.floor-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // 모든 탭 버튼 비활성화
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // 선택된 콘텐츠 보여주기 및 탭 활성화
+            document.getElementById(`floor-content-${floorId}`).classList.remove('hidden');
+            document.getElementById(`tab-${floorId.toLowerCase()}`).classList.add('active');
+        }
+
+        // 초기 로드 시 3층 활성화
+        document.addEventListener('DOMContentLoaded', () => {
+             // 모바일 메뉴 클릭 시 메뉴 숨김
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                });
+            });
+            
+            showFloor('3F'); 
+        });
+    </script>
+</body>
+</html>
